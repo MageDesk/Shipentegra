@@ -29,6 +29,7 @@ use Magento\Shipping\Model\Tracking\Result\StatusFactory;
 use Psr\Log\LoggerInterface as Logger;
 use MageDesk\ShipEntegra\Service\Engines\CalculateAllEngine;
 use Magento\Framework\Xml\Security;
+use MageDesk\ShipEntegra\Service\Engines\TrackEngine;
 
 /**
  * Class Shipping
@@ -129,6 +130,11 @@ class Shipping extends \Magento\Shipping\Model\Carrier\AbstractCarrierOnline imp
     protected $xmlSecurity;
 
     /**
+     * @var TrackEngine
+     */
+    protected $trackEngine;
+
+    /**
      * Shipping constructor.
      *
      * @param ResultFactory $rateResultFactory
@@ -149,6 +155,7 @@ class Shipping extends \Magento\Shipping\Model\Carrier\AbstractCarrierOnline imp
      * @param Data $directoryData
      * @param StockRegistryInterface $stockRegistry
      * @param array $data
+     * @param TrackEngine $trackEngine
      */
     public function __construct(
         \Magento\Shipping\Model\Rate\ResultFactory $rateResultFactory,
@@ -158,6 +165,7 @@ class Shipping extends \Magento\Shipping\Model\Carrier\AbstractCarrierOnline imp
         \Magento\Quote\Model\Quote\Address\RateResult\ErrorFactory $rateErrorFactory,
         \Psr\Log\LoggerInterface $logger,
         Security $xmlSecurity,
+        TrackEngine $trackEngine,
         \Magento\Shipping\Model\Simplexml\ElementFactory $xmlElFactory,
         \Magento\Shipping\Model\Rate\ResultFactory $rateFactory,
         \Magento\Shipping\Model\Tracking\ResultFactory $trackFactory,
@@ -173,6 +181,7 @@ class Shipping extends \Magento\Shipping\Model\Carrier\AbstractCarrierOnline imp
         $this->_rateResultFactory = $rateResultFactory;
         $this->_rateMethodFactory = $rateMethodFactory;
         $this->calculateAllEngine = $calculateAllEngine;
+        $this->trackEngine = $trackEngine;
         parent::__construct(
             $scopeConfig,
             $rateErrorFactory,
@@ -253,10 +262,7 @@ class Shipping extends \Magento\Shipping\Model\Carrier\AbstractCarrierOnline imp
      */
     public function getTracking($trackings)
     {
-        $info = new \Magento\Shipping\Model\Tracking\Result();
-        $track = new AbstractResult();
-        $info->append($track);
-        return $info;
+        return $this->trackEngine->execute($trackings);
     }
 
     /**

@@ -9,14 +9,14 @@ namespace MageDesk\ShipEntegra\Service\Endpoints;
 use MageDesk\ShipEntegra\Api\Data\EndpointDataInterface;
 
 /**
- * Class GetOrderService
+ * Class GetTrackService
  */
-class GetOrderService extends AbstractService
+class GetTrackService extends AbstractService
 {
     /**
      * @var string
      */
-    protected string $url = 'orders/manual';
+    protected string $url = 'logistics/shipments/activities?trackingNumber=';
 
     /**
      * @var string
@@ -27,9 +27,9 @@ class GetOrderService extends AbstractService
      * @param string $orderId
      * @return $this
      */
-    public function setOrderId(string $orderId): GetOrderService
+    public function setOrderId(string $orderId): GetTrackService
     {
-        $this->setUrl($this->getUrl() . '/' . $orderId);
+        $this->setUrl($this->getUrl() . $orderId);
 
         return $this;
     }
