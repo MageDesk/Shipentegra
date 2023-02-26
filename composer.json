@@ -1,0 +1,20 @@
+{
+  "name": "magedesk/module-shipentegra",
+  "version": "1.0.0",
+  "description": "ShipEntegra",
+  "type": "magento2-module",
+  "require": {
+    "magento/framework": "*",
+    "magento/module-shipping": "*",
+    "magento/module-checkout": "*",
+    "magento/module-sales": "*"
+  },
+  "autoload": {
+    "files": [
+      "registration.php"
+    ],
+    "psr-4": {
+      "MageDesk\\ShipEntegra\\": ""
+    }
+  }
+}

@@ -1,0 +1,22 @@
+<?xml version="1.0" ?>
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+	<table name="sales_order">
+		<column name="dim_weight" nullable="true" xsi:type="varchar" comment="Dim Weight" length="100"/>
+	</table>
+	<table name="quote">
+		<column name="dim_weight" nullable="true" xsi:type="varchar" comment="Dim Weight" length="100"/>
+	</table>
+    <table name="magedesk_shipentegra_shipentegraorder" engine="innodb" comment="SHIPENTEGRAORDERs">
+        <column name="entity_id" xsi:type="int" comment="entity_id" nullable="true" identity="true" unsigned="true" padding="10"/>
+        <column name="shipentegra_order_id" xsi:type="varchar" comment="shipentegra_order_id" nullable="true"/>
+        <column name="courier" xsi:type="varchar" comment="courier" nullable="true"/>
+        <column name="tracking_number" xsi:type="varchar" comment="tracking_number" nullable="true"/>
+        <column name="label" xsi:type="varchar" comment="label" nullable="true"/>
+        <column name="se_order_id" xsi:type="varchar" comment="se_order_id" nullable="true"/>
+        <column name="service_type" xsi:type="int" comment="service_type" nullable="true"/>
+        <column name="order_id" xsi:type="int" comment="order_id" nullable="true"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="entity_id"/>
+        </constraint>
+    </table>
+</schema>

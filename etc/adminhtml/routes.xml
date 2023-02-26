@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @author Atwix Team
+ * @copyright Copyright (c) Atwix (https://www.atwix.com/)
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:App/etc/routes.xsd">
+    <router id="admin">
+        <route id="mgdsk_shpntgr" frontName="mgdsk_shpntgr">
+            <module name="MageDesk_ShipEntegra"/>
+        </route>
+    </router>
+</config>

@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @author MageDesk Team
+ * @copyright Copyright (c) MageDesk (https://www.magedesk.com/)
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="MageDesk\ShipEntegra\Api\Data\ConfigProviderInterface"
+                type="MageDesk\ShipEntegra\Model\Data\ConfigProvider"/>
+    <preference for="MageDesk\ShipEntegra\Api\Data\EndpointDataInterface"
+                type="MageDesk\ShipEntegra\Model\Data\EndpointData"/>
+    <type name="MageDesk\ShipEntegra\Service\Endpoints\AbstractService">
+        <arguments>
+            <argument name="clientService" xsi:type="object">
+                MageDesk\ShipEntegra\Service\RequestClient\ClientService\Proxy
+            </argument>
+        </arguments>
+    </type>
+    <preference for="MageDesk\ShipEntegra\Api\Data\VolumeCalculationInterface"
+                type="MageDesk\ShipEntegra\Model\Data\VolumeCalculation"/>
+    <preference for="MageDesk\ShipEntegra\Api\Data\ServiceInfoInterface"
+                type="MageDesk\ShipEntegra\Model\Data\ServiceInfo"/>
+    <preference for="MageDesk\ShipEntegra\Api\ShipEntegraOrderRepositoryInterface"
+                type="MageDesk\ShipEntegra\Model\ShipEntegraOrderRepository" />
+    <preference for="MageDesk\ShipEntegra\Api\Data\ShipEntegraOrderInterface"
+                type="MageDesk\ShipEntegra\Model\Data\ShipEntegraOrder"/>
+    <preference for="MageDesk\ShipEntegra\Api\Data\ShipEntegraOrderSearchResultsInterface"
+                type="Magento\Framework\Api\SearchResults"/>
+</config>

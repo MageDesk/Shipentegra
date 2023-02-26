@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ * @author MageDesk Team
+ * @copyright Copyright (c) MageDesk (https://www.magedesk.com/)
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:DataObject/etc/fieldset.xsd">
+        <scope id="global">
+            <fieldset id="response_to_rates">
+                <field name="clearServiceName">
+                    <aspect name="to_rate" targetField="methodTitle"/>
+                </field>
+                <field name="serviceName">
+                    <aspect name="to_rate" targetField="method"/>
+                </field>
+                <field name="totalPrice">
+                    <aspect name="to_rate" targetField="price"/>
+                </field>
+                <field name="additionalDescription">
+                    <aspect name="to_rate" targetField="carrierTitle"/>
+                </field>
+            </fieldset>
+            <fieldset id="sales_convert_quote">
+                <field name="dim_weight">
+                    <aspect name="to_order" />
+                </field>
+            </fieldset>
+        </scope>
+</config>
